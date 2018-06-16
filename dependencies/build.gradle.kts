@@ -6,11 +6,9 @@ val bootVersion: String by project
 val coroutinesVersion: String by project
 
 dependencyManagement {
-
 	imports {
 		mavenBom("org.springframework.boot:spring-boot-dependencies:$bootVersion")
 	}
-
 	dependencies {
 		dependency("org.springframework.fu:spring-fu:$version")
 		dependency("org.springframework.fu.module:spring-fu-dynamic-configuration:$version")
