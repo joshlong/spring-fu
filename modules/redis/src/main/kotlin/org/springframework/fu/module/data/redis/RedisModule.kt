@@ -18,7 +18,6 @@ package org.springframework.fu.module.data.redis
 
 import org.springframework.context.support.GenericApplicationContext
 import org.springframework.context.support.registerBean
-import org.springframework.core.io.ResourceLoader
 import org.springframework.data.redis.connection.RedisPassword
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration
@@ -106,15 +105,15 @@ open class RedisModule(
 
 		this.context.registerBean<RedisSerializationContext<Any, Any>> {
 
-			val jdkSerializer = JdkSerializationRedisSerializer(ref<ResourceLoader>().classLoader)
+			val jdkSerializer = JdkSerializationRedisSerializer(context.classLoader)
 
 			RedisSerializationContext
-				.newSerializationContext<Any, Any>()
-				.key(jdkSerializer)
-				.value(jdkSerializer)
-				.hashKey(jdkSerializer)
-				.hashValue(jdkSerializer)
-				.build()
+					.newSerializationContext<Any, Any>()
+					.key(jdkSerializer)
+					.value(jdkSerializer)
+					.hashKey(jdkSerializer)
+					.hashValue(jdkSerializer)
+					.build()
 		}
 
 		this.context.registerBean {
