@@ -1,0 +1,9 @@
+= Spring Data Redis module
+
+This module configures a `ReactiveRedisTemplate` bean.
+
+```kotlin
+application {
+	redis(uri = "redis://localhost")
+}
+```
